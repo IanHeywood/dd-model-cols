@@ -204,7 +204,7 @@ def first_null(f,D):
 	return 180.0*null_rad/numpy.pi
 
 
-models = sorted(glob.glob('img_laduma_01_2048_wtspec_J033230-280757.ms_corr_pcal*00*-model.fits'))
+models = sorted(glob.glob('img_*.ms_corr_pcal*00*-model.fits'))
 n_spokes = 3
 offset = 26.0
 D = 13.5
