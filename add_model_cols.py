@@ -26,27 +26,22 @@ def predict(msname,imgbase):
         os.system(syscall)
 
 
-def add_scratch_col(myms,col_name):
-	tt = table(myms,readonly=False,ack=False)
-	desc = tt.getcoldesc('DATA')
-	desc['name'] = col_name
-	desc['comment'] = desc['comment'].replace(' ','_')
-	tt.addcols(desc)
-	tt.done()
-	return desc
+
 
 def add_scratch_col(myms,col_name):
 	tt = table(myms,readonly=False,ack=False)
 	colnames = tt.colnames()
 	if col_name in colnames:
 		bi(col_name+' already exists, will not be created')
+		made = False
 	else:
 		desc = tt.getcoldesc('DATA')
 		desc['name'] = col_name
 		desc['comment'] = desc['comment'].replace(' ','_')
 		tt.addcols(desc)
+		made = True
 	tt.done()
-	return desc
+	return made
 
 myms = 'laduma_01_2048_wtspec_J033230-280757.ms'
 prefix = 'img_laduma_01_2048_wtspec_J033230-280757.ms_corr_pcal'
